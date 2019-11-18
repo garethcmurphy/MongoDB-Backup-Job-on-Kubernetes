@@ -2,14 +2,14 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: mongoutil-mongodump
-  namespace: kube-system
+  namespace: dev
 spec:
   template:
     spec:
       containers:
       - name: mongoutil-mongodump
         image: bitnami/mongodb
-        command: ["mongodump", "--host", "icp-mongodb", "--password",  "password", "--out", "/dump", "--verbose"]
+        command: ["mongodump", "--host", "local-mongodb-mongodb",  "--out", "/dump", "--verbose"]
         volumeMounts:
         - mountPath: "/dump"
           name: mongodump
